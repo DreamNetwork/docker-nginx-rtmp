@@ -1,0 +1,12 @@
+diff -ur nginx-1.6.2/debian/rules nginx-1.6.2+rtmp/debian/rules
+--- nginx-1.6.2/debian/rules	2014-12-01 12:12:00.000000000 +0100
++++ nginx-1.6.2+rtmp/debian/rules	2015-02-03 00:17:39.506520641 +0100
+@@ -9,7 +9,7 @@
+ DEBIAN_NGINX_PERL_LDFLAGS:= $(debian_ldflags)
+ export DEBIAN_NGINX_PERL_LDFLAGS
+ 
+-FLAVOURS := full light extras
++FLAVOURS := full
+ 
+ MODULESDIR = $(CURDIR)/debian/modules
+ BASEDIR = $(CURDIR)

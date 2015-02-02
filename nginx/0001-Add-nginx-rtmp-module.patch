@@ -1,0 +1,13 @@
+diff -ur nginx-1.6.2/debian/rules nginx-1.6.2+rtmp/debian/rules
+--- nginx-1.6.2/debian/rules	2014-12-01 12:12:00.000000000 +0100
++++ nginx-1.6.2+rtmp/debian/rules	2015-02-03 00:15:37.359767274 +0100
+@@ -46,7 +46,8 @@
+ 			--with-http_ssl_module \
+ 			--with-http_stub_status_module \
+ 			--with-http_realip_module \
+-			--with-http_auth_request_module
++			--with-http_auth_request_module \
++			--add-module=/usr/src/nginx-rtmp-module
+ 
+ light_configure_flags := \
+ 			$(common_configure_flags) \
