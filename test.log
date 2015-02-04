@@ -1,0 +1,21 @@
+Step 0 : FROM dockerfile/ubuntu
+ ---> e7fc98dc1b07
+Step 1 : RUN apt-get install git
+ ---> Using cache
+ ---> 970a7cb29a40
+Step 2 : RUN add-apt-repository -y ppa:nginx/stable && apt-get update
+ ---> Using cache
+ ---> 368d2b730f90
+Step 3 : RUN cd /usr/src && git clone git://github.com/arut/nginx-rtmp-module.git nginx-rtmp-module
+ ---> Using cache
+ ---> c7408004ba7b
+Step 4 : RUN cd /usr/src && apt-get build-dep nginx -y --force-yes && apt-get source nginx
+ ---> Using cache
+ ---> aa69d225d690
+Step 5 : COPY nginx/*.patch /usr/src/
+ ---> Using cache
+ ---> 1684eae8c7a3
+Step 6 : RUN cd /usr/src/nginx-*.*/debian &&  sed -i 's!common_configure_flags :=!common_configure_flags := --add-module=/usr/src/nginx-rtmp-module !g' rules
+ ---> Using cache
+ ---> 4b9bbb03366c
+Step 7 : RUN cd /usr/src/nginx-*.*/ &&  dpkg-buildpackage -b -j2
